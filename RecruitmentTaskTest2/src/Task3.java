@@ -2,27 +2,25 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Task3 {
-    ////3 20:00
+
     public static void main(String[] args) {
-        int n=6;
-        int result=1;
+        int n=15;
         int[] array = new int[n];
 
-        while(true) {
-            if(result==0){
-                System.out.println(Arrays.toString(array));
-                return;
-            }
-            result=0;
-            for (int i = 0; i < n; i++) {
-                array[i] = (int) (Math.random() * 99) + (int) (Math.random()* (-99));
-                result += array[i];
-                for (int j = 0; j < n; j++){
-                    if(array[i]==array[j]){
-                        array[i]+=1;
-                    }
-                }
+
+        if(n%2==0) {
+            for (int i = 0; i < n - n / 2; i++) {
+                array[i] = (int) (Math.random() * 99);
+                array[i+(n/2)]= array[i]*(-1);
             }
         }
+        if(n%2==1){
+            for (int i = 0; i < n - (n/2+1); i++) {
+                array[i] = (int) (Math.random() * 99);
+                array[n/2+1+i]= array[i]*(-1);
+            }
+        }
+        System.out.println(Arrays.toString(array));
+
     }
 }
